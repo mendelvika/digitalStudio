@@ -1,0 +1,145 @@
+.text {
+  position: relative;
+  top: 230px;
+  left: 150px;
+  height: 240px;
+  width: 400px;
+  .main-header {
+    position: relative;
+    font-size: 7em;
+    font-weight:900;
+    line-height: 1em;
+    color: $white-color;
+    font-family: $font-family;
+    letter-spacing: 6px;
+    text-shadow: 6px 6px 0px $yellow-color;
+    &:after{
+      content: attr(data-text);
+      position: absolute;
+      left: 2px;
+      text-shadow: -1px 0 red;
+      top: 0;
+      color: $white-color;
+      background: $black-color;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      animation: noise-anim 6s infinite linear alternate-reverse;
+    }
+    &::before{
+      content: attr(data-text);
+      position: absolute;
+      left: -2px;
+      text-shadow: $white-color;
+      top: 0;
+      color: $white-color;
+      background: $black-color;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      animation: noise-anim-2 9s infinite linear alternate-reverse;
+    }
+  }
+
+}
+
+@keyframes noise-anim {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+    }
+  }
+}
+
+
+@keyframes noise-anim-2 {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+    }
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .text {
+    left: 100px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .text {
+    left: 60px;
+    top: 180px;
+    .main-header {
+      font-size: 6em;
+    }
+  }
+
+}
+@media screen and (max-width: 850px) {
+  .text {
+    left: 60px;
+    top: 180px;
+    .main-header {
+      font-size: 5em;
+      letter-spacing: 3px;
+    }
+  }
+
+}
+@media screen and (max-width: 700px) {
+  .text {
+    left: 60px;
+    top: 180px;
+    .main-header {
+      letter-spacing: 3px;
+      font-size: 4em;
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+ 
+  .text {
+    width: 270px;
+    height: 170px;
+    top: -90px;
+    left: 0px;
+    .main-header {
+      font-size: 5em;
+      letter-spacing: 4px;
+  
+    }
+  
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .text{
+    width: 220px;
+ .main-header {
+    font-size: 4em;
+    letter-spacing: 3px;
+
+  } }
+}
+@media screen and (max-height: 610px) and (max-width: 600px){
+  .text{
+    top:-30px;
+    width: 164px;
+    .main-header {
+      font-size: 3em;
+      letter-spacing: 2px;
+  
+    }
+  }
+}
+@media screen and (max-height:480px) and (max-width: 600px){
+  .text{
+    top:0%;
+    width: 132px;
+    .main-header {
+      font-size: 2.5em;
+      letter-spacing: 1px;
+  
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@mixin centered-elements {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @mixin flex-items {
+    display: flex;
+    justify-content: space-between;
+  }
+  @mixin general {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  @mixin container-size {
+    width: 97%;
+    display: flex;
+    margin: 0 auto;
+  }
+  @mixin bold-text{
+    font-weight:900;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  @mixin cube-sizes{
+    width: 250px;
+    height: 250px;
+  }

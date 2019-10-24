@@ -1,0 +1,20 @@
+@import "variables/colors",
+        "variables/fonts";
+
+@import "mixins/mixins";
+
+@import "navigation/nav";
+
+@import "firstPage/cube",
+        "firstPage/glitch",
+        "firstPage/othercomponents";
+
+@import "secondPage/common",
+        "secondPage/leftSide",
+        "secondPage/rightSide";
+
+@import "thirdPage/carousel";
+
+@import "fourthPage/animText",
+        "fourthPage/form",
+        "fourthPage/other";

@@ -1,0 +1,179 @@
+form {
+  //   position: relative;
+  //   left: 150px;
+  //  top:120px;
+   width: 400px;
+   margin: 0 auto;
+  }
+  form > div {
+    margin-bottom: 20px;
+  }
+  .dropdown {
+    cursor: pointer;
+    position: relative;
+  }
+  .row {
+    display: flex;
+    position: relative;
+  }
+  .row p {
+    border-bottom: 1px solid #fff;
+    font-weight: 400;
+    color: #8a00e6;
+    font-size: 20px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background-color: #000;
+    width: 210px;
+    padding-bottom: 8px;
+    padding-left: 5px;
+    margin: 0px;
+  }
+  .down2 {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #ffffff;
+    position: absolute;
+    right: 0px;
+    top: 20%;
+  }
+  .list {
+    display: none;
+    width: 100%;
+    border: 1px solid #fff;
+    position: absolute;
+    top: 39px;
+    left: 0;
+    background: #000;
+  }
+  .list ul {
+    text-align: left;
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    padding-left: 5%;
+  }
+  .list ul li {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 10px 0;
+    width: 100%;
+    transition: 0.1s ease;
+  }
+  .list ul li:hover {
+    color: #8a00e6;
+  }
+  label {
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    font-size: 20px;
+    text-align: left;
+    margin-right: 15px;
+  }
+  input {
+    font-weight: 400;
+    color: #8a00e6;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background-color: #000;
+    width: 160px;
+    padding-bottom: 8px;
+    padding-left: 5px;
+  }
+  .interested {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  textarea {
+    font-weight: 400;
+    font-size: 14px;
+    width: 400px;
+    height: 110px;
+    background-color: #000;
+    border: 1px solid #fff;
+    color: #888;
+    padding: 10px;
+  }
+  button {
+    font-weight: 400;
+    font-size: 20px;
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: #000;
+    width: 200px;
+    padding: 10px;
+    display: block;
+    cursor: pointer;
+    margin: 20px auto;
+  }
+  button:hover {
+    border: 1px solid #fff;
+    background-color: #8a00e6;
+    color: #fff;
+  }
+  @media screen and (max-width: 1000px){
+    form{
+      width:350px;
+    
+    }
+    label {
+
+      font-size: 18px;
+    }
+    input{
+    
+      font-size: 18px;
+      width: 150px;
+    }
+    form > div {
+      margin-bottom: 15px;
+    }
+    .row p {
+      font-size: 18px;
+      width: 190px;}
+      textarea{
+        width:350px;
+      }
+  } 
+  @media screen and (max-width: 850px){
+    form{
+      padding-left:0px;
+    }
+  }
+  @media screen and (max-width: 400px){
+    form{
+      width:250px;
+    
+    }
+    label {
+      font-size: 16px;
+    }
+    input{
+    
+      font-size: 16px;
+      width: 140px;
+    }
+    form > div {
+      margin-bottom: 15px;
+    }
+    .row p {
+      font-size: 16px;
+      width: 170px;}
+      textarea{
+        width:250px;
+      }
+      .list ul li {
+        font-size: 16px;
+      }
+      .interested{
+        flex-direction: column;
+      }
+  }

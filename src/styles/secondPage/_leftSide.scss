@@ -1,0 +1,35 @@
+.left-side {
+    width: 40%;
+    height: 658px;
+    background-color: $black-color;
+    display: flex;
+    align-items: center;
+  }
+  .img-container {
+    width: 500px;
+    height: 500px;
+    // background-image: url("./images/9.gif");
+    background-size: cover;
+    transition: all 0.5s ease;
+    overflow: hidden;
+    :hover{
+        transform: scale(1.2); 
+    }
+  }
+
+@media screen and (max-width: 1040px){
+  .img-container {
+    width: 400px;
+    height: 400px;
+  }
+}
+@media screen and (max-width: 860px) {
+  .left-side{
+    width:45%;
+  }
+  }
+  @media screen and (max-width: 800px) {
+    .left-side{
+     display: none;
+    }
+    }
