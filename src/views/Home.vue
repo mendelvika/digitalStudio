@@ -73,20 +73,34 @@ export default {
   name: "home",
   components: {},
   data() {
-    return {};
+    return {
+      ax: 0,
+      ay: 0
+    };
   },
   methods: {
     mouseover: function(e) {
-      var ax = -(window.innerWidth / 2 - e.pageX) / 5;
-      var ay = (window.innerHeight / 2 - e.pageY) / 2.5;
+      this.ax = -(window.innerWidth / 2 - e.pageX) / 5;
+      this.ay = (window.innerHeight / 2 - e.pageY) / 2.5;
       var cube = document.querySelector(".cube");
       cube.style.animation = "none";
       cube.style.transform =
-        "rotateY(" + ax + "deg)" + "rotateX(" + ay + "deg)";
+        "rotateY(" + this.ax + "deg)" + "rotateX(" + this.ay + "deg)";
     },
     mouseleave: function(e) {
-      var cube = document.querySelector(".cube");
-      cube.style.animation = "spin 40s infinite linear";
+      // var cube = document.querySelector(".cube");
+      // cube.style.animation = "spin 40s infinite linear";
+       var style = document.createElement("style");
+          var cube = document.querySelector(".cube");
+    style.rel = "stylesheet";
+    style.appendChild(document.createTextNode(""));
+    document.head.appendChild(style);
+    style.sheet.insertRule(`\
+    @keyframes anim {\
+     0% { transform: rotateY(${this.ax}) rotateX(${this.ay});   }\
+    100%  { transform: rotateY(360deg) rotateX(360deg);}\
+    }`);
+    cube.style.animation = "anim 60s infinite linear";
     }
   }
 };
