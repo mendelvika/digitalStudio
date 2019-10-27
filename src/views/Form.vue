@@ -18,15 +18,15 @@
           <div class="interested">
             <label>Interested in</label>
             <div class="dropdown">
-              <div class="row">
-                <p class="wrap">Web Development</p>
+              <div class="row" @click="showServices=!showServices">
+                <p class="wrap">{{service}}</p>
                 <div class="down2"></div>
               </div>
-              <div class="list" >
+              <div class="list" v-show="showServices">
                 <ul>
-                  <li>Web Development</li>
-                  <li>Design</li>
-                  <li>Branding</li>
+                  <li @click="innerServices">Web Development</li>
+                  <li @click="innerServices">Design</li>
+                  <li @click="innerServices">Branding</li>
                 </ul>
               </div>
             </div>
@@ -96,7 +96,8 @@ export default {
       inputError: true,
       showThanks: false,
       submitted: false,
-      showServices: false
+      showServices: false,
+      service: "Web Development"
     };
   },
   computed: {
@@ -108,6 +109,20 @@ export default {
     }
   },
   methods: {
+    innerServices(event) {
+      let items = document.querySelectorAll(".list ul li");
+      let drop = document.querySelector("dropdown");
+      if (items[0].contains(event.target)) {
+        this.service = "Web Development";
+        this.showServices = false;
+      } else if (items[1].contains(event.target)) {
+        this.service = "Design";
+        this.showServices = false;
+      } else if (items[2].contains(event.target)) {
+        this.service = "Branding";
+        this.showServices = false;
+      }
+    },
     isEmail: str => {
       let regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return str.match(regexp);
@@ -176,7 +191,7 @@ export default {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  width: 40%;
+  width: 570px;
   height: 37%;
   padding: 15px 23px;
   background: #000;
@@ -204,5 +219,33 @@ export default {
   left: 93%;
   margin-top: 3%;
   cursor: pointer;
+}
+@media screen and (max-width: 650px) {
+  .thanks {
+    width: 350px;
+  }
+  .thanks p:first-of-type {
+    font-size: 3.5em;
+    line-height: 1em;
+  }
+  .thanks p:nth-of-type(2) {
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 400px) {
+  .thanks {
+    width: 270px;
+  }
+  .thanks p:first-of-type {
+    font-size: 2.6em;
+    line-height: 1em;
+  }
+  .thanks p:nth-of-type(2) {
+    font-size: 0.7em;
+  }
+  .thanks img {
+  width: 15px;
+  height: 15px;
+  }
 }
 </style>
