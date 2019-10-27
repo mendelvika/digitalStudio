@@ -2,10 +2,18 @@
   <div class="form-container" @mousemove="mousemove">
     <div class="container-sides">
       <div class="left-container">
-        <form @submit.prevent="formSubmit">
+        <form @submit.prevent="validateForm" method="post">
           <div>
             <label for>Hello. My name is</label>
-            <input v-model="name" type="text" @focus="errorBorder" :class="{'red-border': inputError}" autofocus placeholder="person/company" />
+            <input
+              v-model="name"
+              name="name"
+              type="text"
+              @focus="errorBorder"
+              :class="{'red-border': submitted && missingName}"
+              autofocus
+              placeholder="person/company"
+            />
           </div>
           <div class="interested">
             <label>Interested in</label>
@@ -14,7 +22,7 @@
                 <p class="wrap">Web Development</p>
                 <div class="down2"></div>
               </div>
-              <div class="list" style="display:none">
+              <div class="list" >
                 <ul>
                   <li>Web Development</li>
                   <li>Design</li>
@@ -32,11 +40,18 @@
             <input v-model="deadline" type="text" placeholder="yesterday" />
           </div>
           <div>
-            <label for>Contact me at</label>
-            <input v-model="contact" type="text"  @focus="errorBorder" :class="{'red-border': inputError}" placeholder="phone/email" />
+            <label for="email">Contact me at</label>
+            <input
+              v-model="email"
+              name="email"
+              type="email"
+              @focus="errorBorder"
+              :class="{'red-border': submitted && missingEmail}"
+              placeholder="email"
+            />
           </div>
-          <textarea v-model="task" placeholder="Tell us more"></textarea>
-          <button type="submit" @click="checkForm">Submit</button>
+          <textarea v-model="task" type="text" placeholder="Tell us more"></textarea>
+          <button type="submit">Submit</button>
           <pre>{{output}}</pre>
         </form>
       </div>
@@ -53,46 +68,69 @@
         </div>
       </div>
     </div>
-    <div class="background" v-show="checkForm()">
-    <div class="thanks">
-      <img src="../styles/images/close.png">
-      <p>thank you</p>
-      <p>we will answer you in few minutes</p>
-    </div>
+    <div class="background" v-if="showThanks">
+      <div class="thanks">
+        <img src="../styles/images/closeYel.png" @click="showThanks=false" />
+        <p>thank you</p>
+        <p>we will answer you in few minutes</p>
+      </div>
     </div>
   </div>
-
 </template>
 
 <script>
 // @ is an alias to /src
+import axios from "axios";
 
 export default {
   name: "form",
   components: {},
   data() {
     return {
-      name: null,
-      budget: null,
-      deadline: null,
-      contact: null,
-      task: null,
-      output: null,
-      inputError: true
+      name: "",
+      budget: "",
+      deadline: "",
+      email: "",
+      task: "",
+      output: "",
+      inputError: true,
+      showThanks: false,
+      submitted: false,
+      showServices: false
     };
   },
+  computed: {
+    missingName: function() {
+      return this.name === "";
+    },
+    missingEmail: function() {
+      return this.isEmail(this.email) === null;
+    }
+  },
   methods: {
-    formSubmit(e) {
-      e.preventDefault();
-      console.log(this.name);
+    isEmail: str => {
+      let regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return str.match(regexp);
+    },
+    validateForm(e) {
+      this.submitted = true;
+      if (this.missingName || this.missingEmail) {
+        event.preventDefault();
+      } else {
+        this.formSubmit();
+      }
+    },
+    formSubmit() {
+      this.submitted = true;
+      this.showThanks = true;
       let currentObj = this;
 
-      this.$axios
+      this.$http
         .post("http://test.sharksteam.com.ua/test.php", {
           name: this.name,
           budget: this.budget,
           deadline: this.deadline,
-          contact: this.contact,
+          email: this.email,
           task: this.task
         })
         .then(function(response) {
@@ -112,24 +150,16 @@ export default {
       yellow.style.transform = `rotateY(${ax}deg) rotateX(${ay}deg) translateX(${ax *
         -0.2}px) translateY(${ay * 0.6}px)`;
     },
-    errorBorder(e){
+    errorBorder(e) {
       this.inputError = true;
-      e.target.classList.remove('red-border')
-    },
-    checkForm(e){
-      if (this.name && this.contact) {
-        return true;
-      }
-      if(!this.name || !this.contact){
-        this.inputError = false;
-      }
+      e.target.classList.remove("red-border");
     }
   }
 };
 </script>
 <style>
 .red-border {
-  border: 1px solid #f00;
+  border-bottom: 1px solid #f00;
 }
 .background {
   position: fixed;
@@ -138,7 +168,7 @@ export default {
   left: 0;
   right: 0;
   background-color: black;
-  opacity: 0.9;
+  opacity: 0.95;
   z-index: 999;
 }
 .thanks {
@@ -149,11 +179,15 @@ export default {
   width: 40%;
   height: 37%;
   padding: 15px 23px;
-  background-color: rgb(255, 255, 255);
-  color: rgb(119, 0, 255);
+  background: #000;
+  color: rgb(115, 255, 0);
   font-family: "Archivo Black", sans-serif;
   box-sizing: border-box;
   opacity: 1;
+  text-shadow: 0 0 10px rgba(132, 242, 30, 0.384),
+    /* 0 0 21px rgba(125, 242, 30, 0.92),
+  0 0 34px rgba(150, 242, 30, 0.78), */
+      0 0 30px rgba(150, 242, 30, 0.562);
 }
 .thanks p:first-of-type {
   font-size: 5.7em;
@@ -163,10 +197,12 @@ export default {
   font-size: 1.6em;
 }
 
-.thanks img{
- position: relative;
-left:93%;
-margin-top:3%;
-cursor:pointer;
+.thanks img {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  left: 93%;
+  margin-top: 3%;
+  cursor: pointer;
 }
 </style>
