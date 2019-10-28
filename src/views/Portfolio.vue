@@ -1,6 +1,6 @@
 <template>
   <div class="portfolio-container" @mousemove="move">
-    <div class="portfolio-header">portfolio</div>
+      <div class="portfolio-header">portfolio</div>
     <div class="scene2" v-wheel.passive="onWheel">
       <div class="carousel">
         <div class="carousel__cell">
@@ -59,7 +59,7 @@ export default {
       var ay = (window.innerHeight / 2 - e.pageY) / 20;
       header.style.textShadow = `${ay + 10}px ${ax + 10}px 0px #6e16c0`;
     },
-    onWheel:function(e) {
+    onWheel: function(e) {
       let delta = e.deltaY || e.detail || e.wheelDelta;
       let deg = 60;
       let carousel = document.querySelector(".carousel");

@@ -2,44 +2,66 @@
   <div class="main-page">
     <div class="main">
       <div class="text">
-        <div class="main-header" data-text="digital">digital</div>
-        <div class="main-header" data-text="studio">studio</div>
+        <transition
+          appear
+          mode="in-out"
+          enter-active-class="animated fadeInLeft"
+          leave-class="animated fadeOutLeft"
+        >
+          <div class="main-header" data-text="digital">digital</div>
+        </transition>
+        <transition
+          appear
+          mode="in-out"
+          enter-active-class="animated fadeInLeft"
+          leave-class="animated fadeOutLeft"
+        >
+          <div class="main-header" data-text="studio">studio</div>
+        </transition>
       </div>
+
       <div class="cube-container" @mouseover="mouseover" @mouseleave="mouseleave">
-        <div class="scene">
-          <div class="cube">
-            <div class="cube__face cube__face--front">
-              cr
-              <br />ea
-              <br />te
-            </div>
-            <div class="cube__face cube__face--back">
-              de
-              <br />ve
-              <br />lop
-            </div>
-            <div class="cube__face cube__face--right">
-              wo
-              <br />rkh
-              <br />ard
-            </div>
-            <div class="cube__face cube__face--left">
-              fe
-              <br />elg
-              <br />ood
-            </div>
-            <div class="cube__face cube__face--top">
-              de
-              <br />ve
-              <br />lop
-            </div>
-            <div class="cube__face cube__face--bottom">
-              de
-              <br />ve
-              <br />lop
+        <transition
+          appear
+          mode="in-out"
+          enter-active-class="animated rotateInUpRight"
+          leave-class="animated rollOut"
+        >
+          <div class="scene">
+            <div class="cube">
+              <div class="cube__face cube__face--front">
+                cr
+                <br />ea
+                <br />te
+              </div>
+              <div class="cube__face cube__face--back">
+                de
+                <br />ve
+                <br />lop
+              </div>
+              <div class="cube__face cube__face--right">
+                wo
+                <br />rkh
+                <br />ard
+              </div>
+              <div class="cube__face cube__face--left">
+                fe
+                <br />elg
+                <br />ood
+              </div>
+              <div class="cube__face cube__face--top">
+                inn
+                <br />ova
+                <br />te
+              </div>
+              <div class="cube__face cube__face--bottom">
+                ins
+                <br />pir
+                <br />ate
+              </div>
             </div>
           </div>
-        </div>
+        </transition>
       </div>
       <div class="down">
         <svg width="46" height="46" xmlns="http://www.w3.org/2000/svg">
@@ -90,17 +112,17 @@ export default {
     mouseleave: function(e) {
       // var cube = document.querySelector(".cube");
       // cube.style.animation = "spin 40s infinite linear";
-       var style = document.createElement("style");
-          var cube = document.querySelector(".cube");
-    style.rel = "stylesheet";
-    style.appendChild(document.createTextNode(""));
-    document.head.appendChild(style);
-    style.sheet.insertRule(`\
+      var style = document.createElement("style");
+      var cube = document.querySelector(".cube");
+      style.rel = "stylesheet";
+      style.appendChild(document.createTextNode(""));
+      document.head.appendChild(style);
+      style.sheet.insertRule(`\
     @keyframes anim {\
      0% { transform: rotateY(${this.ax}) rotateX(${this.ay});   }\
     100%  { transform: rotateY(360deg) rotateX(360deg);}\
     }`);
-    cube.style.animation = "anim 60s infinite linear";
+      cube.style.animation = "anim 60s infinite linear";
     }
   }
 };

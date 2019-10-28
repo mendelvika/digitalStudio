@@ -7,13 +7,19 @@
   .main-header {
     position: relative;
     font-size: 7em;
-    font-weight:900;
+    font-weight: 900;
     line-height: 1em;
     color: $white-color;
     font-family: $font-family;
     letter-spacing: 6px;
     text-shadow: 6px 6px 0px $yellow-color;
-    &:after{
+    &:first-child{
+      animation-delay: 0.3s;
+    }
+    &:last-child{
+      animation-delay: 0.7s;
+    }
+    &:after {
       content: attr(data-text);
       position: absolute;
       left: 2px;
@@ -25,7 +31,7 @@
       clip: rect(0, 900px, 0, 0);
       animation: noise-anim 6s infinite linear alternate-reverse;
     }
-    &::before{
+    &:before {
       content: attr(data-text);
       position: absolute;
       left: -2px;
@@ -38,7 +44,6 @@
       animation: noise-anim-2 9s infinite linear alternate-reverse;
     }
   }
-
 }
 
 @keyframes noise-anim {
@@ -49,7 +54,6 @@
     }
   }
 }
-
 
 @keyframes noise-anim-2 {
   $steps: 20;
@@ -73,7 +77,6 @@
       font-size: 6em;
     }
   }
-
 }
 @media screen and (max-width: 850px) {
   .text {
@@ -84,7 +87,6 @@
       letter-spacing: 3px;
     }
   }
-
 }
 @media screen and (max-width: 700px) {
   .text {
@@ -97,7 +99,6 @@
   }
 }
 @media screen and (max-width: 600px) {
- 
   .text {
     width: 270px;
     height: 170px;
@@ -106,40 +107,36 @@
     .main-header {
       font-size: 5em;
       letter-spacing: 4px;
-  
     }
-  
   }
 }
 
 @media screen and (max-width: 325px) {
-  .text{
+  .text {
     width: 220px;
- .main-header {
-    font-size: 4em;
-    letter-spacing: 3px;
-
-  } }
+    .main-header {
+      font-size: 4em;
+      letter-spacing: 3px;
+    }
+  }
 }
-@media screen and (max-height: 610px) and (max-width: 600px){
-  .text{
-    top:-30px;
+@media screen and (max-height: 610px) and (max-width: 600px) {
+  .text {
+    top: -30px;
     width: 164px;
     .main-header {
       font-size: 3em;
       letter-spacing: 2px;
-  
     }
   }
 }
-@media screen and (max-height:480px) and (max-width: 600px){
-  .text{
-    top:0%;
+@media screen and (max-height: 480px) and (max-width: 600px) {
+  .text {
+    top: 0%;
     width: 132px;
     .main-header {
       font-size: 2.5em;
       letter-spacing: 1px;
-  
     }
   }
 }

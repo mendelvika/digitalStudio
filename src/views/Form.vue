@@ -3,77 +3,175 @@
     <div class="container-sides">
       <div class="left-container">
         <form @submit.prevent="validateForm" method="post">
-          <div>
-            <label for>Hello. My name is</label>
-            <input
-              v-model="name"
-              name="name"
-              type="text"
-              @focus="errorBorder"
-              :class="{'red-border': submitted && missingName}"
-              autofocus
-              placeholder="person/company"
-            />
-          </div>
-          <div class="interested">
-            <label>Interested in</label>
-            <div class="dropdown">
-              <div class="row" @click="showServices=!showServices">
-                <p class="wrap">{{service}}</p>
-                <div class="down2"></div>
-              </div>
-              <div class="list" v-show="showServices">
-                <ul>
-                  <li @click="innerServices">Web Development</li>
-                  <li @click="innerServices">Design</li>
-                  <li @click="innerServices">Branding</li>
-                </ul>
+          <transition
+            appear
+            mode="in-out"
+            enter-active-class="animated fadeInLeft"
+            leave-active-class="animated fadeOutLeft"
+          >
+            <div>
+              <label for>Hello. My name is</label>
+              <input
+                v-model="name"
+                name="name"
+                type="text"
+                @focus="errorBorder"
+                :class="{'red-border': submitted && missingName, 'animated pulse': submitted && missingName}"
+                autofocus
+                placeholder="person/company"
+              />
+            </div>
+          </transition>
+          <transition
+            appear
+            mode="in-out"
+            enter-active-class="animated fadeInLeft"
+            leave-active-class="animated fadeOutLeft"
+          >
+            <div class="interested">
+              <label>Interested in</label>
+              <div class="dropdown">
+                <div class="row" @click="showServices=!showServices">
+                  <p class="wrap">{{service}}</p>
+                  <div class="down2"></div>
+                </div>
+                <div class="list" v-show="showServices">
+                  <ul>
+                    <li @click="innerServices">Web Development</li>
+                    <li @click="innerServices">Design</li>
+                    <li @click="innerServices">Branding</li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-          <div>
-            <label for>My budget is</label>
-            <input v-model="budget" type="text" placeholder="one billion dollars" />
-          </div>
-          <div>
-            <label for>and I need it done by</label>
-            <input v-model="deadline" type="text" placeholder="yesterday" />
-          </div>
-          <div>
-            <label for="email">Contact me at</label>
-            <input
-              v-model="email"
-              name="email"
-              type="email"
-              @focus="errorBorder"
-              :class="{'red-border': submitted && missingEmail}"
-              placeholder="email"
-            />
-          </div>
-          <textarea v-model="task" type="text" placeholder="Tell us more"></textarea>
-          <button type="submit">Submit</button>
-          <pre>{{output}}</pre>
+          </transition>
+          <transition
+            appear
+            mode="in-out"
+            enter-active-class="animated fadeInLeft"
+            leave-active-class="animated fadeOutLeft"
+          >
+            <div>
+              <label for>My budget is</label>
+              <input v-model="budget" type="text" placeholder="one billion dollars" />
+            </div>
+          </transition>
+          <transition
+            appear
+            mode="in-out"
+            enter-active-class="animated fadeInLeft"
+            leave-active-class="animated fadeOutLeft"
+          >
+            <div>
+              <label for>and I need it done by</label>
+              <input v-model="deadline" type="text" placeholder="yesterday" />
+            </div>
+          </transition>
+          <transition
+            appear
+            mode="in-out"
+            enter-active-class="animated fadeInLeft"
+            leave-active-class="animated fadeOutLeft"
+          >
+            <div>
+              <label for="email">Contact me at</label>
+              <input
+                v-model="email"
+                name="email"
+                type="email"
+                @focus="errorBorder"
+                :class="{'red-border': submitted && missingEmail, 'animated pulse': submitted && missingName}"
+                placeholder="email"
+              />
+            </div>
+          </transition>
+          <transition
+            appear
+            mode="in-out"
+            enter-active-class="animated fadeInLeft"
+            leave-active-class="animated fadeOutLeft"
+          >
+            <textarea v-model="task" type="text" placeholder="Tell us more"></textarea>
+          </transition>
+          <transition
+            appear
+            mode="in-out"
+            enter-active-class="animated fadeInUp"
+            leave-active-class="animated fadeOutLeft"
+          >
+            <button type="submit">Submit</button>
+          </transition>
         </form>
       </div>
+
       <div class="right-container">
         <div class="yellow">
-          <h1>let's</h1>
-          <h1>create</h1>
-          <h1>together</h1>
+          <transition
+            appear
+            mode="in-out"
+            enter-active-class="animated zoomIn"
+            leave-active-class="animated fadeOutLeft"
+          >
+            <h1>let's</h1>
+          </transition>
+          <transition
+            appear
+            mode="in-out"
+            enter-active-class="animated zoomIn"
+            leave-active-class="animated fadeOutLeft"
+          >
+            <h1>create</h1>
+          </transition>
+          <transition
+            appear
+            mode="in-out"
+            enter-active-class="animated zoomIn"
+            leave-active-class="animated fadeOutLeft"
+          >
+            <h1>together</h1>
+          </transition>
         </div>
         <div class="purple">
-          <h1>let's</h1>
-          <h1>create</h1>
-          <h1>together</h1>
+          <transition
+            appear
+            mode="in-out"
+            enter-active-class="animated zoomIn"
+            leave-active-class="animated fadeOutLeft"
+          >
+            <h1>let's</h1>
+          </transition>
+          <transition
+            appear
+            mode="in-out"
+            enter-active-class="animated zoomIn"
+            leave-active-class="animated fadeOutLeft"
+          >
+            <h1>create</h1>
+          </transition>
+          <transition
+            appear
+            mode="in-out"
+            enter-active-class="animated zoomIn"
+            leave-active-class="animated fadeOutLeft"
+          >
+            <h1>together</h1>
+          </transition>
         </div>
       </div>
     </div>
     <div class="background" v-if="showThanks">
-      <div class="thanks">
-        <img src="../styles/images/closeYel.png" @click="showThanks=false" />
-        <p>thank you</p>
-        <p>we will answer you in few minutes</p>
-      </div>
+      <transition
+        appear
+        mode="out-in"
+        enter-active-class="animated zoomIn"
+        leave-active-class="animated fadeOutLeft"
+      >
+        <div class="thanks" v-if="showThanks">
+          <img src="../styles/images/closeYel.png" @click="showThanks=false" />
+          <p>thank you</p>
+          <p>we will answer you in few minutes</p>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -120,6 +218,8 @@ export default {
         this.showServices = false;
       } else if (items[2].contains(event.target)) {
         this.service = "Branding";
+        this.showServices = false;
+      } else if (!items.contains(event.target)) {
         this.showServices = false;
       }
     },
@@ -175,6 +275,7 @@ export default {
 <style>
 .red-border {
   border-bottom: 1px solid #f00;
+  animation-name: animated pulse;
 }
 .background {
   position: fixed;
@@ -244,8 +345,8 @@ export default {
     font-size: 0.7em;
   }
   .thanks img {
-  width: 15px;
-  height: 15px;
+    width: 15px;
+    height: 15px;
   }
 }
 </style>

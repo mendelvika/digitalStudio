@@ -3,12 +3,14 @@ import App from './App.vue'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import vuewheel from 'vuewheel'
+import VAnimateCss from 'v-animate-css'
 
+Vue.use(VAnimateCss)
+
+Vue.prototype.$http = axios
 // Vue.use(vuewheel)
 
-Vue.use(VueAxios, axios, vuewheel)
-
+Vue.use(VueAxios, axios)
 Vue.config.productionTip = false
 
 new Vue({

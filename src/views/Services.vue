@@ -38,9 +38,8 @@
       </div>
       <div class="service3" :class="{active: showDesc3}">
         <h4>
-          <b>03</b>web develop
-                  <div class="closer" @click="showDesc3=false"></div>
-
+          <b>03</b>web development
+          <div class="closer" @click="showDesc3=false"></div>
         </h4>
         <p>
           Web development broadly refers to the tasks associated with
@@ -57,8 +56,7 @@
       <div class="service4" :class="{active: showDesc4}">
         <h4>
           <b>04</b>branding
-                  <div class="closer" @click="showDesc4=false"></div>
-
+          <div class="closer" @click="showDesc4=false"></div>
         </h4>
         <p>
           Branding, by definition, is a marketing practice in which a company
@@ -72,22 +70,50 @@
         </div>
       </div>
       <ul>
-        <li @click="showDescription1" @mouseover="changeImage(image1)">
-          <img src="../styles/images/9.gif" alt="gif2" />
-          <b>01</b>content creation
-        </li>
+        <transition
+          appear
+          mode="in-out"
+          enter-active-class="animated fadeInLeft"
+          leave-class="animated fadeOutLeft"
+        >
+          <li @click="showDescription1" @mouseover="changeImage(image1)">
+            <img src="../styles/images/9.gif" alt="gif2" />
+            <b>01</b>content creation
+          </li>
+        </transition>
+        <transition
+          appear
+          mode="in-out"
+          enter-active-class="animated fadeInLeft delay-1s"
+          leave-class="animated fadeOutLeft"
+          >
         <li @click="showDescription2" @mouseover="changeImage(image2)">
           <b>02</b>marketing
           <img src="../styles/images/6.gif" alt="gif2" />
         </li>
+        </transition>
+         <transition
+          appear
+          mode="in-out"
+          enter-active-class="animated fadeInLeft delay-2s"
+          leave-class="animated fadeOutLeft"
+          >
         <li @click="showDescription3" @mouseover="changeImage(image3)">
           <img src="../styles/images/5.gif" alt="gif2" />
-          <b>03</b>web develop
+          <b>03</b>web development
         </li>
+         </transition>
+          <transition
+          appear
+          mode="in-out"
+          enter-active-class="animated fadeInLeft delay-3s"
+          leave-class="animated fadeOutLeft"
+          >
         <li @click="showDescription4" @mouseover="changeImage(image4)">
           <b>04</b>branding
           <img src="../styles/images/8.gif" alt="gif2" />
         </li>
+          </transition>
       </ul>
     </div>
   </div>
