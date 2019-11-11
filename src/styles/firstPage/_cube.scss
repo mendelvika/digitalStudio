@@ -6,11 +6,8 @@
 }
 $bordered-font: "MyWebFont";
 .cube-container {
-    height: 559px;
-    width:100%;
-    position: relative;
-    top: 100px;
-    padding: 120px 220px 0 350px;
+    width:250px;
+    height: 250px;
     font-family: $bordered-font;
     font-size: 4.45em; 
 }
@@ -47,7 +44,6 @@ $bordered-font: "MyWebFont";
     border: 2px solid $purple-color;
     color: $yellow-color;
     box-shadow: 0px 0px 30px 4px rgba(117, 16, 232, 0.35);
-    text-shadow: 5px 5px 20px rgba(156, 232, 16, 0.35);
     font-size: 1.5em;
     line-height: 0.77em;
     /* backface-visibility: hidden;  */
@@ -75,28 +71,16 @@ $bordered-font: "MyWebFont";
     width:200px;
     height:200px;
   }
-  @media screen and (min-width:1500px){
-    .cube-container{
-      right:-100px;
-    }
-  }
-  @media screen and (max-width:1230px){
-    .cube-container{
-      right:100px;
-    }
-  }
-  @media screen and (max-width:1100px){
-    .cube-container{
-      right:150px;
-    }
-    .scene{
-      perspective: 800px;
-    }
-  }
+
+  // @media screen and (max-width:1100px){
+  //   .scene{
+  //     perspective: 800px;
+  //   }
+  // }
   @media screen and (max-width:1000px){
     .cube-container{
-      right:200px;
-      padding: 80px 200px 0 350px;
+      width:200px;
+      height: 200px;
     }
    
     .scene{
@@ -135,15 +119,15 @@ $bordered-font: "MyWebFont";
     }
   }
   @media screen and (max-width:850px){
-    .cube-container{
-      right:200px;
-      padding: 60px 200px 0 350px;
-    }
     .scene{
       perspective: 350px;
     }
   }
   @media screen and (max-width:700px){
+    .cube-container{
+      width:150px;
+      height: 150px;
+    }
     .scene{
       perspective: 300px;
       width:150px;
@@ -179,20 +163,7 @@ $bordered-font: "MyWebFont";
       transform: rotateX(-90deg) translateZ(75px);
     }
   }
-  @media screen and (max-width:600px){
-    .cube-container{
-      left: 50%;
-      position: absolute;
-      transform: translateX(-50%);
-      height: 60%;
-      padding: 0;
-      right: 0;
-    }
-    .scene{
-      perspective: 250px;
-      margin: 50px auto;
-    }
-  }
+
   @media screen and (max-width:320px){
     .scene{
       perspective: 300px;
@@ -205,7 +176,8 @@ $bordered-font: "MyWebFont";
       height: 120px;
     }
     .cube-container{
-      top:10%;
+      width:120px;
+      height: 120px;
     }
     .cube{
      width:120px;
@@ -240,9 +212,6 @@ $bordered-font: "MyWebFont";
   @media screen and (max-height:480px) and (max-width: 600px){
     .scene{
       perspective: 400px;
-    }
-    .cube-container{
-      top:10%;
     }
   }
   

@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Services from './views/Services.vue'
 import Portfolio from './views/Portfolio.vue'
-import Form from './views/Form.vue'
+import Contacts from './views/Contacts.vue'
 
 
 Vue.use(Router)
@@ -28,9 +28,9 @@ export default new Router({
       component: Portfolio
     },
     {
-      path: '/form',
-      name: 'form',
-      component: Form
+      path: '/contacts',
+      name: 'contacts',
+      component: Contacts
     }
   ]
 })

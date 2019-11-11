@@ -5,7 +5,7 @@
         <form @submit.prevent="validateForm" method="post">
           <transition
             appear
-            mode="in-out"
+            mode="out-in"
             enter-active-class="animated fadeInLeft"
             leave-active-class="animated fadeOutLeft"
           >
@@ -16,7 +16,7 @@
                 name="name"
                 type="text"
                 @focus="errorBorder"
-                :class="{'red-border': submitted && missingName, 'animated pulse': submitted && missingName}"
+                :class="{'red-border': submitted && missingName, 'animated shake': submitted && missingName}"
                 autofocus
                 placeholder="person/company"
               />
@@ -35,13 +35,20 @@
                   <p class="wrap">{{service}}</p>
                   <div class="down2"></div>
                 </div>
-                <div class="list" v-show="showServices">
-                  <ul>
-                    <li @click="innerServices">Web Development</li>
-                    <li @click="innerServices">Design</li>
-                    <li @click="innerServices">Branding</li>
-                  </ul>
-                </div>
+                <transition
+                  appear
+                  mode="in-out"
+                  enter-active-class="animated fadeInDown"
+                  leave-active-class="animated fadeOutDown"
+                >
+                  <div class="list" v-show="showServices">
+                    <ul>
+                      <li @click="innerServices">Web Development</li>
+                      <li @click="innerServices">Design</li>
+                      <li @click="innerServices">Branding</li>
+                    </ul>
+                  </div>
+                </transition>
               </div>
             </div>
           </transition>
@@ -80,7 +87,7 @@
                 name="email"
                 type="email"
                 @focus="errorBorder"
-                :class="{'red-border': submitted && missingEmail, 'animated pulse': submitted && missingName}"
+                :class="{'red-border': submitted && missingEmail, 'animated shake': submitted && missingName}"
                 placeholder="email"
               />
             </div>
@@ -162,7 +169,7 @@
     <div class="background" v-if="showThanks">
       <transition
         appear
-        mode="out-in"
+        mode="in-out"
         enter-active-class="animated zoomIn"
         leave-active-class="animated fadeOutLeft"
       >
@@ -181,7 +188,7 @@
 import axios from "axios";
 
 export default {
-  name: "form",
+  name: "contacts",
   components: {},
   data() {
     return {
@@ -275,7 +282,7 @@ export default {
 <style>
 .red-border {
   border-bottom: 1px solid #f00;
-  animation-name: animated pulse;
+  animation-name: animated heartBeat;
 }
 .background {
   position: fixed;

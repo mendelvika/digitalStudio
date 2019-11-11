@@ -1,31 +1,31 @@
 <template>
-  <div class="main-page">
+  <div class="main-page" @mouseover="mouseover" @mouseleave="mouseleave"> 
     <div class="main">
       <div class="text">
         <transition
           appear
           mode="in-out"
           enter-active-class="animated fadeInLeft"
-          leave-class="animated fadeOutLeft"
+          leave-active-class="animated fadeOutLeft"
         >
           <div class="main-header" data-text="digital">digital</div>
         </transition>
         <transition
           appear
-          mode="in-out"
+          mode="out-in"
           enter-active-class="animated fadeInLeft"
-          leave-class="animated fadeOutLeft"
+          leave-active-class="animated fadeOutRight"
         >
           <div class="main-header" data-text="studio">studio</div>
         </transition>
       </div>
 
-      <div class="cube-container" @mouseover="mouseover" @mouseleave="mouseleave">
+      <div class="cube-container" >
         <transition
           appear
           mode="in-out"
           enter-active-class="animated rotateInUpRight"
-          leave-class="animated rollOut"
+          leave-active-class="animated rollOut"
         >
           <div class="scene">
             <div class="cube">
@@ -63,7 +63,7 @@
           </div>
         </transition>
       </div>
-      <div class="down">
+      <!-- <div class="down">
         <svg width="46" height="46" xmlns="http://www.w3.org/2000/svg">
           <g>
             <title>background</title>
@@ -83,7 +83,7 @@
             />
           </g>
         </svg>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

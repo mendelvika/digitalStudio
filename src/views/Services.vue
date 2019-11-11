@@ -49,7 +49,7 @@
           </p>
 
           <div class="card">
-            <router-link tag="a" to="/form">contact us</router-link>
+            <router-link tag="a" to="/contacts">contact us</router-link>
           </div>
         </div>
       </transition>

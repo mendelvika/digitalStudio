@@ -2,9 +2,10 @@
   <div id="app">
     <Navbar />
          <transition
-        name="router-anim"
-        enter-active-class="animated fadeInUp"
-        leave-class="animated fadeOutUp"
+      name="router-anim"
+      enter-active-class="animated fadeInRight"
+      leave-active-class="animated fadeOutLeft"
+      mode="out-in"
       >
         <router-view />
       </transition>

@@ -12,7 +12,7 @@
         <router-link tag="li" to="/portfolio">
           <a href="#">portfolio</a>
         </router-link>
-        <router-link tag="li" to="/form">
+        <router-link tag="li" to="/contacts">
           <a href="#">contacts</a>
         </router-link>
       </ul>
@@ -46,33 +46,35 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.router-link-active{
+  color:rgb(157, 255, 0);
+}
 .header {
   justify-content: space-between;
-  width: 97%;
+  width: 100%;
   display: flex;
   position: fixed;
-  left: 50%;
-  margin-left: -49%;
   background-color: transparent;
-  padding: 20px;
-  align-items: center; 
-  // transform: translateX(1.5%);
+  padding: 2%;
+  align-items: center;
   z-index: 5;
   font-family: "Poppins", sans-serif;
 }
-.logo {
-      font-weight:900;
-    text-align: center;
-    text-transform: uppercase;
-  margin-left: 35px;
-  // border: 1px solid rgb(157, 255, 0);
+.logo a {
+  margin-left: 20px;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  text-shadow: 5px 5px 10px rgba(110, 16, 232, 0.74),
+    -5px -5px 10px rgba(110, 16, 232, 0.74);
   width: 57px;
   height: 57px;
-  padding-top: 5px;
   display: inline-block;
   box-sizing: border-box;
   font-family: "MyWebFont";
-  font-size: 36px;
+  font-size: 40px;
   color: rgb(110, 22, 192);
 }
 
@@ -80,21 +82,32 @@ nav {
   display: flex;
   align-items: center;
   ul {
-    width: 600px;
+    width: 700px;
     margin-right: 45px;
-       display: flex;
+    display: flex;
     justify-content: space-between;
     list-style-type: none;
     li {
-      transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
       height: 40px;
       a {
         text-decoration: none;
         color: #fff;
-        font-size: 1.2em;
-        transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+        font-size: 1.3em;
+        transition: all 0.3s linear;
+        &:after {
+          display: block;
+          content: "";
+          border-bottom: solid 2px rgb(157, 255, 0);
+          transform: scaleX(0);
+          transition: all 250ms ease-in-out;
+        }
+        &:hover:after {
+          transform: scaleX(1);
+          transition: all 250ms ease-in-out;
+        }
         &:hover {
-          color: rgb(157, 255, 0);
+          color: rgb(180, 255, 59);
+          transition: all 250ms ease-in-out;
         }
       }
     }
@@ -149,53 +162,77 @@ nav {
   transform: rotate(-135deg);
 }
 .icons {
-     display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
   height: 300px;
   flex-direction: column;
   position: absolute;
   right: 63px;
-  bottom: -500px;
+  top: 35vh;
   a {
     img {
       width: 40px;
       height: 40px;
-    &:hover {
-      transform: translateX(-10px);
-    }
-    &:active {
-      transform: scale(1.2);
+      transition: all 0.2s ease;
+      &:hover {
+        transform: scale(1.2);
+        transition: all 0.2s ease;
+      }
+      &:active {
+        transform: scale(1.2);
+      }
     }
   }
 }
-}
-@media screen and (max-width: 900px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) and (min-height: 1024px) and (max-height: 1366px) {
+  .icons {
+    flex-direction: row;
+    z-index: 10;
+    width: 70vw;
+    height: 50px;
+    justify-content: space-between;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 90vh;
+    bottom: 5vh;
+    a {
+      img {
+        width: 70px;
+        height: 70px;
+      }
+    }
+  }
+  .header {
+    padding: 2% 3%;
+    align-items: center;
+  }
   .burger {
     display: block;
   }
   nav {
-    display: none;
     position: fixed;
     right: 0px;
     left: 0px;
     top: 0px;
-    bottom: 0;
+    bottom: 0px;
     background-color: #000;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transform: translateX(105%);
+    transform: translateX(100%);
     transition: transform 0.6s ease;
 
     ul {
-      margin: 70px 0px 10px 0px;
+      width: 100%;
+      margin-right: 0px;
+      padding: 7vh 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      height: 450px;
 
       li {
-        height: 100px;
+        font-size: 1.6em;
+        height: 20vh;
         transition: all 0.25s ease;
         text-align: center;
         &:hover {
@@ -203,12 +240,10 @@ nav {
           transition: all 0.25s ease;
         }
         a {
-          color:rgb(157, 255, 0);
-          height: 100px;
+          color: rgb(157, 255, 0);
           font-size: 4em;
           font-weight: 600;
           letter-spacing: 3px;
-          text-align: center;
         }
       }
     }
@@ -217,41 +252,80 @@ nav {
     transform: translateX(0%);
     transition: transform 0.6s ease;
   }
-  .logo{
-    margin-left: 5px;
+  .logo a {
+    margin-left: 0px;
   }
 }
-@media screen and (max-width: 1150px) {
-  .icons {
-    right: 50px;
-  }
-}
-@media screen and (max-width: 1100px) {
-  .icons {
-    right: 50px;
-  }
-}
+
 @media screen and (max-width: 900px) {
   .icons {
     flex-direction: row;
     z-index: 10;
-    width: 320px;
+    width: 70vw;
     height: 50px;
     justify-content: space-between;
-    right: 50%;
-    transform: translateX(50%);
-    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 90vh;
+    bottom: 5vh;
   }
   .header {
-    padding: 17px;
+    padding: 2% 3%;
+    align-items: center;
+  }
+  .burger {
+    display: block;
+  }
+  nav {
+    position: fixed;
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(100%);
+    transition: transform 0.6s ease;
+
+    ul {
+      width: 100%;
+      margin-right: 0px;
+      padding: 7vh 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      li {
+        height: 20vh;
+        transition: all 0.25s ease;
+        text-align: center;
+        &:hover {
+          transform: translateX(20px);
+          transition: all 0.25s ease;
+        }
+        a {
+          color: rgb(157, 255, 0);
+          font-size: 4em;
+          font-weight: 600;
+          letter-spacing: 3px;
+        }
+      }
+    }
+  }
+  nav.visible {
+    transform: translateX(0%);
+    transition: transform 0.6s ease;
+  }
+  .logo a {
+    margin-left: 0px;
   }
 }
 @media screen and (max-width: 475px) {
-    nav {
+  nav {
     ul {
-      height:67%;
       li {
-         min-height:40px;
         a {
           font-size: 3em;
         }
@@ -260,13 +334,10 @@ nav {
   }
   .burger {
     right: 0px;
-  }
-  .icons {
-    width: 250px;
-     bottom: 10px;
+    top: 5px;
   }
   .logo {
-    margin-left: 15px;
+    margin-left: 0px;
     width: 40px;
     height: 40px;
     font-size: 24px;
@@ -298,7 +369,7 @@ nav {
     }
   }
   .logo {
-    margin-left: 15px;
+    margin-left: 0px;
     width: 30px;
     height: 30px;
     font-size: 16px;
@@ -316,7 +387,6 @@ nav {
     }
   }
   .icons {
-    width: 170px;
     a {
       img {
         width: 30px;
